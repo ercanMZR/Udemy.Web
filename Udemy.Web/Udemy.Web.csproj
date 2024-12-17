@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Services\" />
+    <Folder Include="wwwroot\pictures\courses\" />
   </ItemGroup>
 
 </Project>
