@@ -1,8 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Udemy.Web.Models.Repository;
+using Udemy.Web.Models.Repository.Courses;
 using Udemy.Web.Models.Repository.Entities;
+using Udemy.Web.Models.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));//Burada typeof metodu ile IGenericRepository ve GenericRepository sýnýflarýný ekliyoruz.//typeof(IGenericRepository<>) ifadesi, IGenericRepository arayüzünün türünü temsil ederken, typeof(GenericRepository<>) ifadesi de GenericRepository sýnýfýnýn türünü temsil eder. Bu kullaným, baðýmlýlýk enjeksiyonu (Dependency Injection) için gerekli olan türleri kaydetmek amacýyla yapýlýr.
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();//ICourseRepository ve CourseRepository sýnýflarýný ekliyoruz.
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<CourseServices>();//CourseServices sýnýfýný ekliyoruz.
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

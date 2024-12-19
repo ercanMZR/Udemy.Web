@@ -8,7 +8,7 @@ using Udemy.Web.Models.Services.ViewModel;
 
 namespace Udemy.Web.Models.Services
 {
-    public class CourseService(ICourseRepository courseRepository, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork,UserManager<AppUser>userManager)
+    public class CourseServices(ICourseRepository courseRepository, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork,UserManager<AppUser>userManager)
     {
         public async Task<ServiceResult> CreateCourseAsync(CreateCourseViewModel model)//CreateCourseViewModel sınıfından model adında bir parametre alıyoruz.
         {
