@@ -1,0 +1,25 @@
+﻿@{
+    var statusObject = TempData["status"];
+}
+@if (statusObject is not null)
+{
+    var status = (bool)statusObject;
+    <div id="successOrErrorMessageWrapper">
+        @if (status)
+        {
+            if (TempData["successMessage"] is not null)
+            {
+                <div class="alert alert-primary" role="alert">
+                    @TempData["successMessage"]
+                </div>
+            }
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["errorMessages"]
+            </div>
+        }
+    </div>
+}

@@ -14,8 +14,9 @@ namespace Udemy.Web.Models.Services
         {
             var userId = httpContextAccessor.HttpContext!.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;//Kullanıcının Id'sini alıyoruz.
 
-            var newCourse = new Course
+            var newCourse = new Course()
             {
+                Id = Guid.NewGuid(),
                 Title = model.Title,
                 ShortDescription = model.ShortDescription,
                 Description = model.Description,

@@ -15,10 +15,26 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 });
 
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    var cookieBuilder = new CookieBuilder
+    {
+        Name = "UdemyAppCookie"
+    };
+    opt.LoginPath = new PathString("/Home/Signin");
+    opt.LogoutPath = new PathString("/Member/Logout");
+    opt.AccessDeniedPath = new PathString("Member/AccessDenied");
+    opt.Cookie = cookieBuilder;
+    opt.SlidingExpiration = true;
+    opt.ExpireTimeSpan = System.TimeSpan.FromDays(60);
+});
+
+
 
 var app = builder.Build();
 
@@ -32,6 +48,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

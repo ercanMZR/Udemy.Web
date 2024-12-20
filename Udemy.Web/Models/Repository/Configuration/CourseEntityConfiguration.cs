@@ -9,7 +9,6 @@ namespace Udemy.Web.Models.Repository.Configuration
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.HasKey(x => x.Id);//açıklama: primary key tanımlandı.
-            builder.Property(x => x.Id).UseIdentityColumn();//açıklama: identity özelliği tanımlandı.
             builder.Property(x => x.Title).HasMaxLength(300).IsRequired();//açıklama: Title alanı için max uzunluk ve zorunluluk tanımlandı.
             builder.Property(x => x.Price).HasColumnType("decimal(18,2)").IsRequired();//açıklama: Price alanı için tip ve zorunluluk tanımlandı.
             builder.Property(x => x.ShortDescription).HasMaxLength(300).IsRequired();//açıklama: ShortDescription alanı için max uzunluk ve zorunluluk tanımlandı.
