@@ -20,6 +20,7 @@ namespace Udemy.Web.Models.Repository
         protected override void OnModelCreating(ModelBuilder builder)//Bu metod ile entitylerin mappinglerini yapabiliriz.
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());//Bu kod ile tüm entitylerin mappinglerini tek bir yerden yapmış oluyoruz.
+            builder.Entity<Course>().HasQueryFilter(p => p.IsActive == true && p.IsDeleted == false);//Course entity'si için query filter uyguluyoruz. Bu sayede silinmiş ve pasif olan course'lar veritabanından çekilmeyecek.
             base.OnModelCreating(builder);//IdentityDbContext sınıfının OnModelCreating metodunu override ediyoruz.
         }
 

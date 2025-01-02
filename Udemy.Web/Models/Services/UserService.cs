@@ -12,6 +12,7 @@ namespace Udemy.Web.Models.Services
 
             var newUser = new AppUser
             {
+                UserName = randomUserName,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Udemy.Web.Models.Services.ViewModel
+namespace Udemy.Web.Models.Services.ViewModel.Course
 {
     public record CreateCourseViewModel
     {
@@ -20,6 +21,7 @@ namespace Udemy.Web.Models.Services.ViewModel
 
         public int CategoryId { get; set; }
 
+        [ValidateNever]
         public SelectList CategoryList { get; set; }//Bu property ile kategorileri dropdownlistte göstermek için SelectList tipinde bir property oluşturuyoruz.
     }
 }

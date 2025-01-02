@@ -13,5 +13,10 @@ namespace Udemy.Web.Models.Repository.Courses
         {
             return await _context.Courses.Include(x => x.Category).OrderByDescending(x => x.CreatedAt).ToListAsync();//Include ile Category tablosunu da çektik.orderbydescending ile CreatedAt'e göre sıraladık.
         }
+
+        public async Task<Course?> GetCourseById(Guid courseId)//Id'si verilen kursu getirir.
+        {
+            return await _context.Courses.Include(x => x.Category).Where(x => x.Id == courseId).FirstOrDefaultAsync();//Include ile Category tablosunu da çektik.
+        }
     }
 }

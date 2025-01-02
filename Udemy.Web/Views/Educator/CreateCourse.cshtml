@@ -1,7 +1,65 @@
-﻿@{
+﻿@using Udemy.Web.Models.Services.ViewModel.Course
+@{
     ViewData["Title"] = "CreateCourse";
 
     Layout = "_Educator_Layout ";
 
+
 }
-<h1>CreateCourse</h1>
+@model CreateCourseViewModel
+
+<h2>Create Course</h2>
+
+<form asp-action="CreateCourse" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label"></label>
+        <select asp-for="CategoryId" class="form-select" asp-items="Model.CategoryList"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ShortDescription" class="form-label"></label>
+        <input asp-for="ShortDescription" class="form-control" />
+        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PictureFile" class="form-label"></label>
+        <input asp-for="PictureFile" type="file" class="form-control" />
+        <span asp-validation-for="PictureFile" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="LearningGoal" class="form-label"></label>
+        <input asp-for="LearningGoal" class="form-control" />
+        <span asp-validation-for="LearningGoal" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TotalHourTime" class="form-label"></label>
+        <input asp-for="TotalHourTime" class="form-control" />
+        <span asp-validation-for="TotalHourTime" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Course</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+       

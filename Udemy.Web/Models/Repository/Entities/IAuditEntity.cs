@@ -9,4 +9,9 @@
         public Guid CreatedBy { get; set; }
 
     }
+
+    public interface IAudiUpdateEntity
+    {
+        public DateTime? IsDeleted { get; set; }
+    }
 }

@@ -11,7 +11,7 @@
         public bool IsFail => Errors is not null && Errors.Count > 0;//Eğer hata varsa IsFail true döner.BU property ile hata olup olmadığını kontrol edebiliriz.
         public bool IsSuccess => !IsFail;//Eğer hata yoksa IsSuccess true döner.Bu property ile işlem başarılı mı değil mi kontrol edebiliriz.
 
-        public static ServiceResult<T> Success(T data, string? successMessage)//Bu method ile işlem başarılı olduğunda dönecek olan veriyi ve mesajı döneceğiz.
+        public static ServiceResult<T> Success(T data, string? successMessage=null)//Bu method ile işlem başarılı olduğunda dönecek olan veriyi ve mesajı döneceğiz.
         {
             return new ServiceResult<T>//ServiceResult tipinde bir nesne oluşturup geriye döneceğiz.Amaç işlem başarılı olduğunda bu nesneyi dönebilmek.
             {

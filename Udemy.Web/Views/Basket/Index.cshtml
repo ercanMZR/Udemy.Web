@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model Udemy.Web.Models.Services.ViewModel.Basket.BasketViewModel
+<div class="container mt-5">
+    <div class="row">
+        <!-- Left Side: Basket List -->
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Sepetiniz</h5>
+                    @if (Model.BasketItemViewModels != null && Model.BasketItemViewModels.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var item in Model.BasketItemViewModels)
+                            {
+                                <li class="list-group-item d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/pictures/courses/@item.CoursePictureFileName" alt="Course Picture"
+                                             class="img-thumbnail me-3" style="width: 60px; height: 60px;">
+                                        <div>
+                                            <h6 class="mb-0">@item.CourseTitle</h6>
+                                            <small class="text-muted">@item.CoursePrice</small>
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-sm btn-danger" asp-controller="Baskets" asp-action="RemoveBasketItem" asp-route-id="@item.CourseId">Remove</a>
+
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Sepetiniz boş.</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- Right Side: Total Price -->
+        <div class="col-md-4">
+
+            @if (Model.BasketItemViewModels is not null && Model.BasketItemViewModels.Any())
+            {
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Toplam Fiyat</h5>
+                        <p class="card-text display-4">@Model.TotalPrice</p>
+                        <a asp-controller="Order" asp-action="Index">Payment Info</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

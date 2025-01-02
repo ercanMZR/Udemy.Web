@@ -8,10 +8,7 @@ namespace Udemy.Web.Models.Repository.Entities
 
         public string LastName { get; set; }
 
-        public string GetFullName()
-        {
-            return $"{FirstName} {LastName}";
-        }
+        public string GetFullName => $"{FirstName} {LastName}";//GetFullName adında bir property oluşturduk. Bu property FirstName ve LastName'ı birleştirir.
 
     }
 }

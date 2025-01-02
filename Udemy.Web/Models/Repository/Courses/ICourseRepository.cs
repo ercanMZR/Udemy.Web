@@ -8,5 +8,7 @@ namespace Udemy.Web.Models.Repository.Courses
         Task<List<Course>> GetAllCoursesByUserId(Guid userId);
 
         Task<List<Course>> GetAllCourses();
+
+        Task<Course?> GetCourseById(Guid courseId);
     }
 }

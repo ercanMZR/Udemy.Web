@@ -1,22 +1,18 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using Udemy.Web.Models;
+using Udemy.Web.Models.Services;
 
 namespace Udemy.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(CourseService courseService) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public async Task<IActionResult> Index()
         {
-            _logger = logger;
+            var response = await courseService.GetAllCoursesAsync();
+            return View(response.Data);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult Privacy()
         {
